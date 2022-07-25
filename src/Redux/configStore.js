@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-
-const initialStore = [];
+import stylesReducer from './StylesReducer/stylesReducer';
 
 const store = configureStore({
-  initialStore,
+  reducer: {
+    styles: stylesReducer,
+  },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 })
 
