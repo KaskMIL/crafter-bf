@@ -37,7 +37,7 @@ html {
   flex-direction: column;
   row-gap: 1rem;
 
-  li {
+  a {
     text-align: center;
     height: 33.3%;
     border: 2px solid white;
@@ -46,10 +46,10 @@ html {
     align-items: center;
     justify-content: center;
     background-color: var(--purple);
+    text-decoration: none;
 
-    a {
+    div {
       color: white;
-      text-decoration: none;
       font-size: 6rem;
       font-weight: 700;
     }
