@@ -28,11 +28,13 @@ function BeerStylesPage() {
             <BeerStyleElement
               key={beer.id}
               name={beer.name}
+              id={beer.id}
               abvMax={beer.abv_max}
               abvMin={beer.abv_min}
               ibuMax={beer.ibu_max}
               ibuMin={beer.ibu_min}
               description={beer.description}
+              show={beer.show}
             />
           ))
         }
