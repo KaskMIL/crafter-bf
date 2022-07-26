@@ -7,7 +7,7 @@ const yeastsURL = 'https://rustybeer.herokuapp.com/yeasts';
 const GETYEASTS = 'crafter-bf/redux/GET_YEASTS';
 
 // Action creators
-export const getYeasts = () => (dispatch) => {
+export const getYeasts = () => async (dispatch) => {
   const response = await fetch(yeastsURL, {
     method: 'GET',
   });
@@ -19,10 +19,10 @@ export const getYeasts = () => (dispatch) => {
       id: uuidv4(),
       min_attenuation: yeast.min_attenuation,
       max_attenuation: yeast.max_attenuation,
-      min_fahrenheit: yeast.min_temp[fahrenheit],
-      max_fahrenheit: yeast.max_temp[fahrenheit],
-      min_celsius: yeast.min_temp[celsius],
-      max_celsius: yeast.max_temp[celsius],
+      min_fahrenheit: yeast.min_temp.fahrenheit,
+      max_fahrenheit: yeast.max_temp.fahrenheit,
+      min_celsius: yeast.min_temp.celsius,
+      max_celsius: yeast.max_temp.celsius,
       alc_tolerance: yeast.alc_tolerance,
     }
     return newYeast;
