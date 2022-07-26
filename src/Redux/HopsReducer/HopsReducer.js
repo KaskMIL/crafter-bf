@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 // Base URL
-const hopsURL = 'https://rustybeer.herokuapp.com/hops';
+const hopsURL = 'https://secure-springs-90851.herokuapp.com/https://rustybeer.herokuapp.com/hops';
 
 // Action
 const GETHOPS = 'crafter-bf/redux/GET_HOPS';
@@ -9,7 +9,7 @@ const GETHOPS = 'crafter-bf/redux/GET_HOPS';
 // Action creators
 export const getHops = () => async (dispatch) => {
   const response = await fetch(hopsURL, {
-    method: 'GET'
+    method: 'GET',
   });
 
   const hopsData = await response.json();
@@ -24,7 +24,7 @@ export const getHops = () => async (dispatch) => {
       porpose: hop.porpose,
       country: hop.country,
       description: hop.description,
-    }
+    };
     return newHop;
   });
 
@@ -32,7 +32,7 @@ export const getHops = () => async (dispatch) => {
     type: GETHOPS,
     payload: dataArr,
   });
-}
+};
 
 // Reducer
 const hopsReducer = (state = [], action) => {
@@ -41,7 +41,7 @@ const hopsReducer = (state = [], action) => {
       return action.payload;
     default:
       return state;
-  };
-}
+  }
+};
 
 export default hopsReducer;

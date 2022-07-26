@@ -10,7 +10,7 @@ function Header() {
       </div>
       <div className={styles.titleContainer}>
         <h1>Crafter BF</h1>
-        <p>The Beer-Crafter's best friend!</p>
+        <p>The Beer-Crafter&apos;s best friend!</p>
       </div>
     </header>
   );

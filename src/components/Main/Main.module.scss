@@ -6,13 +6,14 @@ html {
 }
 
 *,
-*:before, *:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 :root {
-  --pink: #EC4C8A;
-  --purple: #4369B2;
+  --pink: #ec4c8a;
+  --purple: #4369b2;
 }
 
 .container {
@@ -29,7 +30,6 @@ html {
 }
 
 .ulCont {
-  padding: 0;
   margin: 0;
   width: 100%;
   padding: 1rem;
@@ -38,7 +38,6 @@ html {
   row-gap: 1rem;
 
   a {
-    text-align: center;
     height: 33.3%;
     border: 2px solid white;
     text-align: center;

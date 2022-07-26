@@ -11,6 +11,6 @@ const store = configureStore({
     yeasts: yeastReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-})
+});
 
 export default store;
