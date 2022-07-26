@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getStylesList } from '../../Redux/StylesReducer/stylesReducer';
 import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
+import styles from './BeerStylesPage.module.scss'
 
 function BeerStylesPage() {
   const beerList = useSelector((state) => state.styles);
@@ -15,7 +16,7 @@ function BeerStylesPage() {
   }, [dispatch, beerList]);
  
   return(
-    <main>
+    <main className={styles.container}>
       <Link to="/">Back</Link>
       <ul>
         {
