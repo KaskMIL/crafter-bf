@@ -1,17 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
 
-// URLs
+// Base URL
 const stylesURL = 'https://rustybeer.herokuapp.com/styles';
-// const hopsURL = 'https://rustybeer.herokuapp.com/hops';
 // const yeastsURL = 'https://rustybeer.herokuapp.com/yeasts';
 
 // Actions
 const GETSTYLES = 'crafter-bf/redux/GET_STYLES';
-// const HOPS = 'crafter-bf/redux/GET_HOPS';
 // const YEASTS = 'crafter-bf/redux/GET_YEASTS';
 
 // Action creators
-
 export const getStylesList = () => async (dispatch) => {
   const response = await fetch(stylesURL, {
     method: 'GET',
