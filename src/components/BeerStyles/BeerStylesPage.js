@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
+import Slider from '@mui/material/Slider';
 import { getStylesList } from '../../Redux/StylesReducer/stylesReducer';
 import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
 import styles from './BeerStylesPage.module.scss';
@@ -21,6 +22,20 @@ function BeerStylesPage() {
       <div className={styles.headerContainer}>
         <Link to="/"><IoIosArrowBack /></Link>
         <h1>Beer styles</h1>
+      </div>
+      <div className={styles.sliderContainer}>
+        <Slider
+          aria-label="Temperature"
+          defaultValue={30}
+          valueLabelDisplay="auto"
+          step={10}
+          marks
+          min={10}
+          max={110}
+          sx={{
+            width: 150,
+          }}
+        />
       </div>
       <ul>
         {
