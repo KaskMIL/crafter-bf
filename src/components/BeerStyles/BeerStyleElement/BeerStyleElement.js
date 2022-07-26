@@ -13,7 +13,7 @@ function BeerStyleElement(props) {
       <img src={beer} alt="Beer" />
       <div className={styles.dataContainer}>
         <h2>{name}</h2>
-        <h3 className={styles.first}>
+        <h3>
           <span className={styles.ibu}> ABV: </span>
           {abvMin}
           <span> to </span>

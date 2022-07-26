@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { IoIosArrowBack } from 'react-icons/io';
 import { getStylesList } from '../../Redux/StylesReducer/stylesReducer';
 import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
 import styles from './BeerStylesPage.module.scss';
@@ -17,7 +18,10 @@ function BeerStylesPage() {
 
   return (
     <main className={styles.container}>
-      <Link to="/">Back</Link>
+      <div className={styles.headerContainer}>
+        <Link to="/"><IoIosArrowBack /></Link>
+        <h1>Beer styles</h1>
+      </div>
       <ul>
         {
           beerList.map((beer) => (
