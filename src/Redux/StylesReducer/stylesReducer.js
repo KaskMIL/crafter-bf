@@ -2,11 +2,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Base URL
 const stylesURL = 'https://rustybeer.herokuapp.com/styles';
-// const yeastsURL = 'https://rustybeer.herokuapp.com/yeasts';
 
 // Actions
 const GETSTYLES = 'crafter-bf/redux/GET_STYLES';
-// const YEASTS = 'crafter-bf/redux/GET_YEASTS';
 
 // Action creators
 export const getStylesList = () => async (dispatch) => {
@@ -35,7 +33,6 @@ export const getStylesList = () => async (dispatch) => {
 };
 
 // Reducer
-
 const stylesReducer = (state = [], action) => {
   switch (action.type) {
     case GETSTYLES:
