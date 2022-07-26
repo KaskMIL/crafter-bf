@@ -14,7 +14,7 @@ function Main() {
         </ul>
       </nav>
     </main>
-  )
+  );
 }
 
 export default Main;

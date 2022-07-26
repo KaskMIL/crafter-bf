@@ -1,22 +1,50 @@
 import React from 'react';
-import styles from './BeerStylesElement.module.scss'
+import PropTypes from 'prop-types';
+import styles from './BeerStylesElement.module.scss';
 import beer from '../../../assets/pint-beer.jpeg';
 
 function BeerStyleElement(props) {
+  const {
+    name, abvMax, abvMin, ibuMin, ibuMax, description,
+  } = props;
 
-  const { name, abv_max, abv_min, ibu_min, ibu_max, description } = props;
-
-  return(
+  return (
     <li className={styles.container}>
       <img src={beer} alt="Beer" />
       <div>
         <h2>{name}</h2>
-        <h3>{abv_min} to {abv_max}</h3>
-        <h3>{ibu_min} to {ibu_max}</h3>
+        <h3>
+          {abvMin}
+          to
+          {abvMax}
+        </h3>
+        <h3>
+          {ibuMin}
+          to
+          {ibuMax}
+        </h3>
         <p>{description}</p>
       </div>
     </li>
-  )
+  );
 }
+
+BeerStyleElement.propTypes = {
+  name: PropTypes.string,
+  abvMin: PropTypes.number,
+  abvMax: PropTypes.number,
+  ibuMin: PropTypes.number,
+  ibuMax: PropTypes.number,
+  description: PropTypes.string,
+};
+
+BeerStyleElement.defaultProps = {
+  name: '',
+  abvMin: 0,
+  abvMax: 0,
+  ibuMin: 0,
+  ibuMax: 0,
+  description: '',
+};
 
 export default BeerStyleElement;

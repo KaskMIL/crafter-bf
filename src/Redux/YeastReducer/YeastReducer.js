@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 // Base URL
-const yeastsURL = 'https://rustybeer.herokuapp.com/yeasts';
+const yeastsURL = 'https://secure-springs-90851.herokuapp.com/https://rustybeer.herokuapp.com/yeasts';
 
 // Action
 const GETYEASTS = 'crafter-bf/redux/GET_YEASTS';
@@ -24,15 +24,15 @@ export const getYeasts = () => async (dispatch) => {
       min_celsius: yeast.min_temp.celsius,
       max_celsius: yeast.max_temp.celsius,
       alc_tolerance: yeast.alc_tolerance,
-    }
+    };
     return newYeast;
   });
 
   dispatch({
     type: GETYEASTS,
     payload: dataArr,
-  })
-}
+  });
+};
 
 // Reducer
 const yeastReducer = (state = [], action) => {
@@ -42,6 +42,6 @@ const yeastReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 export default yeastReducer;

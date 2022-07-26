@@ -9,33 +9,33 @@ function BeerYeastsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(!yeastList.length) {
-      dispatch(getYeasts())
-    };
+    if (!yeastList.length) {
+      dispatch(getYeasts());
+    }
   }, [dispatch, yeastList]);
 
-  return(
+  return (
     <main>
-      <Link to='/'>Back</Link>
+      <Link to="/">Back</Link>
       <ul>
         {
           yeastList.map((yeast) => (
             <YeastElement
               name={yeast.name}
               key={yeast.id}
-              min_attenuation={yeast.min_attenuation}
-              max_attenuation={yeast.max_attenuation}
-              min_fahrenheit={yeast.min_fahrenheit}
-              max_fahrenheit={yeast.max_fahrenheit}
-              min_celsius={yeast.min_celsius}
-              max_celsius={yeast.max_celsius}
-              alc_tolerance={yeast.alc_tolerance}
+              minAttenuation={yeast.min_attenuation}
+              maxAttenuation={yeast.max_attenuation}
+              minFahrenheit={yeast.min_fahrenheit}
+              maxFahrenheit={yeast.max_fahrenheit}
+              minCelsius={yeast.min_celsius}
+              maxCelsius={yeast.max_celsius}
+              alcTolerance={yeast.alc_tolerance}
             />
           ))
         }
       </ul>
     </main>
-  )
+  );
 }
 
 export default BeerYeastsPage;

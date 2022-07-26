@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 // Base URL
-const stylesURL = 'https://rustybeer.herokuapp.com/styles';
+const stylesURL = 'https://secure-springs-90851.herokuapp.com/https://rustybeer.herokuapp.com/styles';
 
 // Actions
 const GETSTYLES = 'crafter-bf/redux/GET_STYLES';
@@ -40,6 +40,6 @@ const stylesReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 export default stylesReducer;

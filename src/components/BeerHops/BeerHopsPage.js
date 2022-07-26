@@ -9,14 +9,14 @@ function BeerHopsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(!hopsList.length) {
+    if (!hopsList.length) {
       dispatch(getHops());
     }
   }, [dispatch, hopsList]);
 
-  return(
+  return (
     <main>
-      <Link to='/'>Back</Link>
+      <Link to="/">Back</Link>
       <ul>
         {
           hopsList.map((hop) => (
@@ -35,7 +35,7 @@ function BeerHopsPage() {
         }
       </ul>
     </main>
-  )
+  );
 }
 
 export default BeerHopsPage;
