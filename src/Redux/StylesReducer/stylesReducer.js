@@ -5,6 +5,7 @@ const stylesURL = 'https://secure-springs-90851.herokuapp.com/https://rustybeer.
 
 // Actions
 const GETSTYLES = 'crafter-bf/redux/GET_STYLES';
+const SHOWINFO = 'crafter-bf/redux/SHOW_INFO';
 
 // Action creators
 export const getStylesList = () => async (dispatch) => {
@@ -22,6 +23,7 @@ export const getStylesList = () => async (dispatch) => {
       ibu_min: beer.ibu_min,
       ibu_max: beer.ibu_max,
       description: beer.description,
+      show: false,
     };
     return newBeer;
   });
@@ -32,11 +34,23 @@ export const getStylesList = () => async (dispatch) => {
   });
 };
 
+export const showInfo = (beerId) => ({
+  type: SHOWINFO,
+  payload: beerId,
+});
+
 // Reducer
 const stylesReducer = (state = [], action) => {
   switch (action.type) {
     case GETSTYLES:
       return action.payload;
+    case SHOWINFO:
+      return [...state.map((beer) => {
+        if (beer.id === action.payload) {
+          return { ...beer, show: !beer.show };
+        }
+        return beer;
+      })];
     default:
       return state;
   }
