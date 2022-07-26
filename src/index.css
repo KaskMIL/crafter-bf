@@ -6,7 +6,8 @@ html {
 }
 
 *,
-*:before, *:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -16,11 +17,16 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New',
     monospace;
 }
 
 :root {
-  --pink: #EC4C8A;
-  --purple: #4369B2;
+  --pink: #ec4c8a;
+  --purple: #4369b2;
 }
