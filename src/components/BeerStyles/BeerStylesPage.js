@@ -38,13 +38,16 @@ function BeerStylesPage() {
 
   // Function to invert ABV active value and set value to default
   const handleAbvButton = () => {
-    if (!abvValue.active) {
+    if (!abvValue.active && !ibuValue.active) {
       setAbvValue({ ...abvValue, active: !abvValue.active });
+    } else if (!abvValue.active && ibuValue.active) {
+      setAbvValue({ ...abvValue, active: !abvValue.active });
+      setIbuValue({ ...ibuValue, active: !ibuValue.active });
     } else {
       setAbvValue({
         ...abvValue,
         value: [1, 10],
-        active: !abvValue.active,
+        active: false,
       });
     }
   };
@@ -56,8 +59,11 @@ function BeerStylesPage() {
 
   // Function to invert IBU active value  and set value to default
   const handleIbuButton = () => {
-    if (!ibuValue.active) {
+    if (!ibuValue.active && !abvValue.active) {
       setIbuValue({ ...ibuValue, active: !ibuValue.active });
+    } else if (!ibuValue.active && abvValue.active) {
+      setIbuValue({ ...ibuValue, active: !ibuValue.active });
+      setAbvValue({ ...abvValue, active: !abvValue.active });
     } else {
       setIbuValue({
         ...ibuValue,
@@ -66,6 +72,7 @@ function BeerStylesPage() {
       });
     }
   };
+  const getText = (value, string) => `${value} ${string}`;
 
   return (
     <main className={styles.container}>
@@ -92,14 +99,15 @@ function BeerStylesPage() {
               onChange={(e) => handleAbvChange(e.target.value)}
               getAriaLabel={() => 'ABV'}
               valueLabelDisplay="auto"
+              getAriaValueText={() => getText(abvValue.value, 'ABV')}
               value={abvValue.value}
               step={1}
               marks
               min={1}
               max={10}
               sx={{
-                width: 200,
-                color: 'pink',
+                width: 300,
+                color: 'white',
               }}
             />
           ) : null
@@ -111,14 +119,15 @@ function BeerStylesPage() {
               onChange={(e) => handleIbuChange(e.target.value)}
               getAriaLabel={() => 'IBU'}
               valueLabelDisplay="auto"
+              getAriaValueText={() => getText(ibuValue.value, 'IBU')}
               value={ibuValue.value}
               step={1}
               marks
               min={0}
               max={200}
               sx={{
-                width: 200,
-                color: 'pink',
+                width: 300,
+                color: 'white',
               }}
             />
           ) : null

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../BeerStylesPage.module.scss';
 
 function ButtonsContainer(props) {
   const { handleAbvButton, handleIbuButton } = props;
   return (
-    <div>
+    <div className={styles.btnContainer}>
       <button onClick={handleAbvButton} type="submit">
         ABV Filter
       </button>
