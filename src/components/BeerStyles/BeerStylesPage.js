@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Slider from '@mui/material/Slider';
-import { getStylesList } from '../../Redux/StylesReducer/stylesReducer';
+import { getStylesList, showInfo } from '../../Redux/StylesReducer/stylesReducer';
 import BeerStylesHeader from './BeerStylesHeader/BeerStylesHeader';
 import ButtonsContainer from './ButtonsContainer/ButtonsContanier';
 import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
@@ -72,14 +72,21 @@ function BeerStylesPage() {
       });
     }
   };
+
+  const handleReducer = (id) => {
+    dispatch(showInfo(id));
+  };
+
   const getText = (value, string) => `${value} ${string}`;
 
   return (
     <main className={styles.container}>
-      <BeerStylesHeader />
+      <BeerStylesHeader title="Beer Styles" />
       <ButtonsContainer
         handleAbvButton={handleAbvButton}
         handleIbuButton={handleIbuButton}
+        firstBtnTitle="ABV Filter"
+        secondBtnTitle="IBU Filter"
       />
       <div className={styles.sliderContainer}>
         {
@@ -146,12 +153,15 @@ function BeerStylesPage() {
                   key={beer.id}
                   name={beer.name}
                   id={beer.id}
-                  abvMax={beer.abv_max}
-                  abvMin={beer.abv_min}
-                  ibuMax={beer.ibu_max}
-                  ibuMin={beer.ibu_min}
+                  firstTitle="ABV:   "
+                  firstMax={beer.abv_max}
+                  firstMin={beer.abv_min}
+                  secondTitle="IBU:   "
+                  secondMax={beer.ibu_max}
+                  secondMin={beer.ibu_min}
                   description={beer.description}
                   show={beer.show}
+                  reducer={handleReducer}
                 />
               );
             }
@@ -166,14 +176,17 @@ function BeerStylesPage() {
               return (
                 <BeerStyleElement
                   key={beer.id}
-                  name={beer.name}
                   id={beer.id}
-                  abvMax={beer.abv_max}
-                  abvMin={beer.abv_min}
-                  ibuMax={beer.ibu_max}
-                  ibuMin={beer.ibu_min}
+                  name={beer.name}
+                  firstTitle="ABV:   "
+                  firstMax={beer.abv_max}
+                  firstMin={beer.abv_min}
+                  secondTitle="IBU:   "
+                  secondMax={beer.ibu_max}
+                  secondMin={beer.ibu_min}
                   description={beer.description}
                   show={beer.show}
+                  reducer={handleReducer}
                 />
               );
             }
@@ -184,12 +197,15 @@ function BeerStylesPage() {
               key={beer.id}
               name={beer.name}
               id={beer.id}
-              abvMax={beer.abv_max}
-              abvMin={beer.abv_min}
-              ibuMax={beer.ibu_max}
-              ibuMin={beer.ibu_min}
+              firstTitle="ABV   "
+              firstMax={beer.abv_max}
+              firstMin={beer.abv_min}
+              secondTitle="IBU   "
+              secondMax={beer.ibu_max}
+              secondMin={beer.ibu_min}
               description={beer.description}
               show={beer.show}
+              reducer={handleReducer}
             />
           );
         })}

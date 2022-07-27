@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getHops } from '../../Redux/HopsReducer/HopsReducer';
 import HopElement from './HopElement/HopElement';
+import BeerStylesHeader from '../BeerStyles/BeerStylesHeader/BeerStylesHeader';
+import ButtonsContainer from '../BeerStyles/ButtonsContainer/ButtonsContanier';
 
 function BeerHopsPage() {
   const hopsList = useSelector((state) => state.hops);
@@ -16,7 +17,11 @@ function BeerHopsPage() {
 
   return (
     <main>
-      <Link to="/">Back</Link>
+      <BeerStylesHeader title="Beer Hops" />
+      <ButtonsContainer
+        firstBtnTitle="Alpha Acid"
+        secondBtnTitle="Beta Acid"
+      />
       <ul>
         {
           hopsList.map((hop) => (
