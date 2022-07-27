@@ -10,7 +10,7 @@ import styles from './BeerStylesPage.module.scss';
 function BeerStylesPage() {
   // Set state to manipulate ABV data
   const [abvValue, setAbvValue] = useState({
-    value: [1, 10],
+    value: [1, 14],
     active: false,
   });
 
