@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './BeerStylesElement.module.scss';
-import beer from '../../../assets/pint-beer.jpeg';
+import pint from '../../assets/pint-beer.jpeg';
+import hop from '../../assets/hops-flower.jpeg';
+import yeast from '../../assets/yeast.jpeg';
 
 function BeerStyleElement(props) {
   const {
     name,
     id,
+    type,
     firstTitle,
     firstMax,
     firstMin,
@@ -22,7 +25,21 @@ function BeerStyleElement(props) {
 
   return (
     <li className={styles.container}>
-      <img src={beer} alt="Beer" />
+      {
+        type === 'beer' ? (
+          <img src={pint} alt="Beer" />
+        ) : null
+      }
+      {
+        type === 'hop' ? (
+          <img src={hop} alt="Hop" />
+        ) : null
+      }
+      {
+        type === 'yeast' ? (
+          <img src={yeast} alt="Yeast" />
+        ) : null
+      }
       <div className={styles.dataContainer}>
         <h2>
           {name}
@@ -79,6 +96,7 @@ function BeerStyleElement(props) {
 
 BeerStyleElement.propTypes = {
   name: PropTypes.string,
+  type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   firstTitle: PropTypes.string,
   firstMin: PropTypes.number,

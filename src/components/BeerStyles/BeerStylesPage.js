@@ -4,7 +4,7 @@ import Slider from '@mui/material/Slider';
 import { getStylesList, showInfo } from '../../Redux/StylesReducer/stylesReducer';
 import BeerStylesHeader from './BeerStylesHeader/BeerStylesHeader';
 import ButtonsContainer from './ButtonsContainer/ButtonsContanier';
-import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
+import BeerStyleElement from '../BeerStyleElement/BeerStyleElement';
 import styles from './BeerStylesPage.module.scss';
 
 function BeerStylesPage() {
@@ -152,6 +152,7 @@ function BeerStylesPage() {
                 <BeerStyleElement
                   key={beer.id}
                   name={beer.name}
+                  type="beer"
                   id={beer.id}
                   firstTitle="ABV:   "
                   firstMax={beer.abv_max}
@@ -177,6 +178,7 @@ function BeerStylesPage() {
                 <BeerStyleElement
                   key={beer.id}
                   id={beer.id}
+                  type="beer"
                   name={beer.name}
                   firstTitle="ABV:   "
                   firstMax={beer.abv_max}
@@ -196,6 +198,7 @@ function BeerStylesPage() {
             <BeerStyleElement
               key={beer.id}
               name={beer.name}
+              type="beer"
               id={beer.id}
               firstTitle="ABV   "
               firstMax={beer.abv_max}
