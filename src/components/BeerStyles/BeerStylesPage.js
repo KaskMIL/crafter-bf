@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Slider from '@mui/material/Slider';
 import { getStylesList } from '../../Redux/StylesReducer/stylesReducer';
 import BeerStylesHeader from './BeerStylesHeader/BeerStylesHeader';
+import ButtonsContainer from './ButtonsContainer/ButtonsContanier';
 import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
 import styles from './BeerStylesPage.module.scss';
 
@@ -43,12 +44,7 @@ function BeerStylesPage() {
   return (
     <main className={styles.container}>
       <BeerStylesHeader />
-      <div>
-        <button onClick={handleAbvButton} type="submit">
-          ABV Filter
-        </button>
-        <button type="submit">IBU Filter</button>
-      </div>
+      <ButtonsContainer handleAbvButton={handleAbvButton} />
       <div className={styles.sliderContainer}>
         <Slider
           onChange={(e) => handleAbvChange(e.target.value)}
