@@ -16,7 +16,7 @@ function BeerStylesPage() {
 
   // Set state to manipulate IBU data
   const [ibuValue, setIbuValue] = useState({
-    value: [0, 200],
+    value: [0, 120],
     active: false,
   });
 
@@ -67,7 +67,7 @@ function BeerStylesPage() {
     } else {
       setIbuValue({
         ...ibuValue,
-        value: [0, 200],
+        value: [0, 120],
         active: !ibuValue.active,
       });
     }
@@ -104,7 +104,7 @@ function BeerStylesPage() {
               step={1}
               marks
               min={1}
-              max={10}
+              max={14}
               sx={{
                 width: 300,
                 color: 'white',
@@ -124,7 +124,7 @@ function BeerStylesPage() {
               step={1}
               marks
               min={0}
-              max={200}
+              max={120}
               sx={{
                 width: 300,
                 color: 'white',
@@ -138,7 +138,7 @@ function BeerStylesPage() {
           // ABV Filter
           if (abvValue.active) {
             if (
-              abvValue.value[0] <= beer.abv_min
+              abvValue.value[0] <= beer.abv_max
               && abvValue.value[1] >= beer.abv_max
             ) {
               return (
@@ -160,7 +160,7 @@ function BeerStylesPage() {
           // IBU Filter
           if (ibuValue.active) {
             if (
-              beer.ibu_min >= ibuValue.value[0]
+              beer.ibu_max >= ibuValue.value[0]
               && beer.ibu_max <= ibuValue.value[1]
             ) {
               return (
