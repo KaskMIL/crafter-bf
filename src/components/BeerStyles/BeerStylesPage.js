@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -8,6 +8,7 @@ import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
 import styles from './BeerStylesPage.module.scss';
 
 function BeerStylesPage() {
+  const [sliderValue, setSliderValue] = useState({ value: [1, 2] });
   const beerList = useSelector((state) => state.styles);
   const dispatch = useDispatch();
 
@@ -17,6 +18,10 @@ function BeerStylesPage() {
     }
   }, [dispatch, beerList]);
 
+  const handleChange = (newValue) => {
+    setSliderValue({ ...sliderValue, value: newValue });
+  };
+
   return (
     <main className={styles.container}>
       <div className={styles.headerContainer}>
@@ -25,15 +30,17 @@ function BeerStylesPage() {
       </div>
       <div className={styles.sliderContainer}>
         <Slider
-          aria-label="Temperature"
-          defaultValue={30}
+          onChange={(e) => handleChange(e.target.value)}
+          getAriaLabel={() => 'ABV'}
           valueLabelDisplay="auto"
-          step={10}
+          value={sliderValue.value}
+          step={1}
           marks
-          min={10}
-          max={110}
+          min={1}
+          max={10}
           sx={{
             width: 150,
+            color: 'pink',
           }}
         />
       </div>
