@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { IoIosArrowBack } from 'react-icons/io';
 import Slider from '@mui/material/Slider';
 import { getStylesList } from '../../Redux/StylesReducer/stylesReducer';
+import BeerStylesHeader from './BeerStylesHeader/BeerStylesHeader';
 import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
 import styles from './BeerStylesPage.module.scss';
 
 function BeerStylesPage() {
-  const [sliderValue, setSliderValue] = useState({
+  // Set state to manipul ABV data
+  const [abvValue, setAbvValue] = useState({
     value: [1, 10],
     active: false,
   });
+  // Set state to manipul IBU data
   const beerList = useSelector((state) => state.styles);
   const dispatch = useDispatch();
 
@@ -21,43 +22,39 @@ function BeerStylesPage() {
     }
   }, [dispatch, beerList]);
 
-  const handleChange = (newValue) => {
-    setSliderValue({ ...sliderValue, value: newValue });
-    console.log(sliderValue);
+  const handleAbvChange = (newValue) => {
+    setAbvValue({ ...abvValue, value: newValue });
+    console.log(abvValue);
   };
 
-  const handleButton = () => {
-    if (!sliderValue.active) {
-      setSliderValue({ ...sliderValue, active: !sliderValue.active });
+  const handleAbvButton = () => {
+    if (!abvValue.active) {
+      setAbvValue({ ...abvValue, active: !abvValue.active });
     } else {
-      setSliderValue({
-        ...sliderValue,
+      setAbvValue({
+        ...abvValue,
         value: [1, 10],
-        active: !sliderValue.active,
+        active: !abvValue.active,
       });
     }
+    console.log(abvValue);
   };
 
   return (
     <main className={styles.container}>
-      <div className={styles.headerContainer}>
-        <Link to="/">
-          <IoIosArrowBack />
-        </Link>
-        <h1>Beer styles</h1>
-      </div>
+      <BeerStylesHeader />
       <div>
-        <button onClick={handleButton} type="submit">
-          IBV Filter
+        <button onClick={handleAbvButton} type="submit">
+          ABV Filter
         </button>
         <button type="submit">IBU Filter</button>
       </div>
       <div className={styles.sliderContainer}>
         <Slider
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => handleAbvChange(e.target.value)}
           getAriaLabel={() => 'ABV'}
           valueLabelDisplay="auto"
-          value={sliderValue.value}
+          value={abvValue.value}
           step={1}
           marks
           min={1}
@@ -70,10 +67,10 @@ function BeerStylesPage() {
       </div>
       <ul>
         {beerList.map((beer) => {
-          if (sliderValue.active) {
+          if (abvValue.active) {
             if (
-              sliderValue.value[0] <= beer.abv_min
-              && sliderValue.value[1] >= beer.abv_max
+              abvValue.value[0] <= beer.abv_min
+              && abvValue.value[1] >= beer.abv_max
             ) {
               return (
                 <BeerStyleElement
