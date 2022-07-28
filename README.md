@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-[Netlify](https://majestic-longma-a0f6ae.netlify.app)
+[Netlify](https://phenomenal-tiramisu-9b35da.netlify.app/)
 
 ## [Loom Video](https://www.loom.com/share/036abbb3ecda4f6bb6f342ac773a2507)
 
