@@ -61,6 +61,10 @@ Give a ⭐️ if you like this project!
 
 <a href="https://pixabay.com/" title="planet icons">Images from Pixabay.com</a>
 
+## Acknowledgements
+
+The design is inspired on the work of [Nelson Sakwa](https://www.behance.net/sakwadesignstudio)
+
 
 ## 📝 License
 
