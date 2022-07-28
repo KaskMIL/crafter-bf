@@ -4,6 +4,7 @@ import { getYeasts } from '../../Redux/YeastReducer/YeastReducer';
 import YeastElement from './YeastElement/YeastElement';
 import BeerStylesHeader from '../ElementHeader/BeerStylesHeader';
 import ButtonsContainer from '../ButtonsContainer/ButtonsContanier';
+import SliderComponent from '../Slider/SliderComponent';
 
 function BeerYeastsPage() {
   // Set dispatch and useSelector
@@ -61,6 +62,16 @@ function BeerYeastsPage() {
     }
   };
 
+  // Function to change value on Fahrenheit state
+  const handleFarChange = (newValue) => {
+    setFahrenheit({ ...fahrenheit, value: newValue });
+  };
+
+  // Function to change value on Celsius state
+  const handleCelChange = (newValue) => {
+    setCelsius({ ...celsius, value: newValue });
+  };
+
   return (
     <main>
       <BeerStylesHeader title="Beer Yeasts" />
@@ -69,6 +80,22 @@ function BeerYeastsPage() {
         handleIbuButton={handleCelBtn}
         firstBtnTitle="Fahrenheit Filter"
         secondBtnTitle="Celsius Filter"
+      />
+      <SliderComponent
+        firstTitle="Fahrenheit Filter"
+        secondTitle="Celsius Filter"
+        firstHandleChange={handleFarChange}
+        secondHandleChange={handleCelChange}
+        firstStateValue={fahrenheit.value}
+        secondStateValue={celsius.value}
+        firstStateActive={fahrenheit.active}
+        secondStateActive={celsius.active}
+        firstMin={60}
+        firstMax={80}
+        firstStep={0.1}
+        secondMin={0}
+        secondMax={30}
+        secondStep={1}
       />
       <ul>
         {
