@@ -121,7 +121,7 @@ function BeerYeastsPage() {
                   id={yeast.id}
                   type="yeast"
                   firstTitle="Farenheit "
-                  secondTitle="Celsius"
+                  secondTitle="Celsius "
                   firstMin={convertTwoDecimals(yeast.min_fahrenheit)}
                   firstMax={convertTwoDecimals(yeast.max_fahrenheit)}
                   secondMin={convertTwoDecimals(yeast.min_celsius)}
