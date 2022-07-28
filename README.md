@@ -64,3 +64,8 @@ Give a ⭐️ if you like this project!
 ## Acknowledgements
 
 The design is inspired on the work of [Nelson Sakwa](https://www.behance.net/sakwadesignstudio)
+
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
