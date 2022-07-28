@@ -59,7 +59,7 @@ Give a ⭐️ if you like this project!
 
 ## Images
 
-<a href="https://pixabay.com/" title="planet icons">Images from Pixabay.com</a>
+<a href="https://pixabay.com/" title="Beer Pint">Images from Pixabay.com</a>
 
 ## Acknowledgements
 
