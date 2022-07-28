@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import Slider from '@mui/material/Slider';
 import { getStylesList, showInfo } from '../../Redux/StylesReducer/stylesReducer';
 import BeerStylesHeader from '../ElementHeader/BeerStylesHeader';
 import ButtonsContainer from '../ButtonsContainer/ButtonsContanier';
