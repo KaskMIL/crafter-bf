@@ -65,7 +65,7 @@ function BeerStyleElement(props) {
               {porpose[0]}
             </h3>
           ) : null}
-          {alcTolerance !== '' && show ? (
+          {alcTolerance !== 0 && show ? (
             <h3>
               <span className={styles.ibu}>Alcohol Tolerance: </span>
               {alcTolerance}
@@ -93,7 +93,7 @@ BeerStyleElement.propTypes = {
   reducer: PropTypes.func.isRequired,
   country: PropTypes.string,
   porpose: PropTypes.arrayOf(PropTypes.string),
-  alcTolerance: PropTypes.string,
+  alcTolerance: PropTypes.number,
 };
 
 BeerStyleElement.defaultProps = {
@@ -108,7 +108,7 @@ BeerStyleElement.defaultProps = {
   show: false,
   country: '',
   porpose: '',
-  alcTolerance: '',
+  alcTolerance: 0,
 };
 
 export default BeerStyleElement;
