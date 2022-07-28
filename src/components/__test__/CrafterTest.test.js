@@ -23,7 +23,7 @@ describe('Testing the reducers', () => {
         show: false,
       },
     ];
-    const unknownAction = () => ({type: 'unknown', payload: 'something'});
+    const unknownAction = () => ({ type: 'unknown', payload: 'something' });
     expect(actions.default(initial, unknownAction)).toEqual(initial);
   });
   test('Change status active false to true and viceversa', () => {
@@ -112,10 +112,10 @@ describe('Body of Styles', () => {
     );
     await waitFor(() => {
       const text = screen.findByText(
-        /Highly carbonated, very light-bodied, nearly flavorless lager designed to be consumed very cold. Very refreshing and thirst quenching./
+        /Highly carbonated, very light-bodied, nearly flavorless lager designed to be consumed very cold. Very refreshing and thirst quenching./,
       );
       expect(text).not.toBe(null);
-    })
+    });
   });
   test('Matches snapshot', () => {
     const tree = renderer.create(
@@ -123,8 +123,8 @@ describe('Body of Styles', () => {
         <Provider store={store}>
           <BeerStylesPage />
         </Provider>
-      </MemoryRouter>
+      </MemoryRouter>,
     ).toJSON();
     expect(tree).toMatchSnapshot();
-  })
-})
+  });
+});
