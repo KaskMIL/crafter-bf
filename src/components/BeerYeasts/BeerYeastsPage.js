@@ -79,9 +79,7 @@ function BeerYeastsPage() {
   };
 
   // function to convert num to 2 decimals
-  const convertTwoDecimals = (num) => (
-    parseFloat(num.toFixed(2))
-  );
+  const convertTwoDecimals = (num) => parseFloat(num.toFixed(2));
 
   return (
     <main className={styles.container}>
@@ -104,13 +102,64 @@ function BeerYeastsPage() {
         firstMin={60}
         firstMax={80}
         firstStep={0.1}
-        secondMin={0}
+        secondMin={10}
         secondMax={30}
         secondStep={0.1}
       />
       <ul>
-        {
-          yeastList.map((yeast) => (
+        {yeastList.map((yeast) => {
+          // Fahrenheit Filter
+          if (fahrenheit.active) {
+            if (
+              fahrenheit.value[0] <= yeast.max_fahrenheit
+              && fahrenheit.value[1] >= yeast.max_fahrenheit
+            ) {
+              return (
+                <BeerStyleElement
+                  name={yeast.name}
+                  key={yeast.id}
+                  id={yeast.id}
+                  type="yeast"
+                  firstTitle="Farenheit "
+                  secondTitle="Celsius"
+                  firstMin={convertTwoDecimals(yeast.min_fahrenheit)}
+                  firstMax={convertTwoDecimals(yeast.max_fahrenheit)}
+                  secondMin={convertTwoDecimals(yeast.min_celsius)}
+                  secondMax={convertTwoDecimals(yeast.max_celsius)}
+                  alcTolerance={yeast.alc_tolerance}
+                  reducer={useShowYeast}
+                  show={yeast.show}
+                />
+              );
+            }
+            return null;
+          }
+          if (celsius.active) {
+            if (
+              celsius.value[0] <= yeast.max_celsius
+              && celsius.value[1] >= yeast.max_celsius
+            ) {
+              return (
+                <BeerStyleElement
+                  name={yeast.name}
+                  key={yeast.id}
+                  id={yeast.id}
+                  type="yeast"
+                  firstTitle="Farenheit "
+                  secondTitle="Celsius"
+                  firstMin={convertTwoDecimals(yeast.min_fahrenheit)}
+                  firstMax={convertTwoDecimals(yeast.max_fahrenheit)}
+                  secondMin={convertTwoDecimals(yeast.min_celsius)}
+                  secondMax={convertTwoDecimals(yeast.max_celsius)}
+                  alcTolerance={yeast.alc_tolerance}
+                  reducer={useShowYeast}
+                  show={yeast.show}
+                />
+              );
+            }
+            return null;
+          }
+          return (
             <BeerStyleElement
               name={yeast.name}
               key={yeast.id}
@@ -126,8 +175,8 @@ function BeerYeastsPage() {
               reducer={useShowYeast}
               show={yeast.show}
             />
-          ))
-        }
+          );
+        })}
       </ul>
     </main>
   );

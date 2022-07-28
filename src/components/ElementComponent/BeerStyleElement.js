@@ -23,29 +23,13 @@ function BeerStyleElement(props) {
 
   return (
     <li className={styles.container}>
-      {
-        type === 'beer' ? (
-          <div className={styles.beerImg} />
-        ) : null
-      }
-      {
-        type === 'hop' ? (
-          <div className={styles.hopImg} />
-        ) : null
-      }
-      {
-        type === 'yeast' ? (
-          <div className={styles.yeastImg} />
-        ) : null
-      }
+      {type === 'beer' ? <div className={styles.beerImg} /> : null}
+      {type === 'hop' ? <div className={styles.hopImg} /> : null}
+      {type === 'yeast' ? <div className={styles.yeastImg} /> : null}
       <div className={styles.dataContainer}>
         <h2>
           {name}
-          {
-            country ? (
-              <span className={styles.country}>{country}</span>
-            ) : null
-          }
+          {country ? <span className={styles.country}>{country}</span> : null}
         </h2>
         <div className={styles.button}>
           {show ? (
@@ -58,43 +42,37 @@ function BeerStyleElement(props) {
             </button>
           )}
         </div>
-        {show ? (
-          <h3>
-            <span className={styles.ibu}>
-              {firstTitle}
-            </span>
-            {firstMin}
-            <span> to </span>
-            {firstMax}
-          </h3>
-        ) : null}
-        {show ? (
-          <h3>
-            <span className={styles.ibu}>
-              {secondTitle}
-            </span>
-            {secondMin}
-            <span> to </span>
-            {secondMax}
-          </h3>
-        ) : null}
-        {
-          porpose !== '' && show ? (
+        <div className={type === 'yeast' ? styles.yeast : null}>
+          {show ? (
+            <h3>
+              <span className={styles.ibu}>{firstTitle}</span>
+              {firstMin}
+              <span> to </span>
+              {firstMax}
+            </h3>
+          ) : null}
+          {show ? (
+            <h3>
+              <span className={styles.ibu}>{secondTitle}</span>
+              {secondMin}
+              <span> to </span>
+              {secondMax}
+            </h3>
+          ) : null}
+          {porpose !== '' && show ? (
             <h3>
               <span className={styles.ibu}>Purpose: </span>
               {porpose[0]}
             </h3>
-          ) : null
-        }
-        {
-          alcTolerance !== '' && show ? (
+          ) : null}
+          {alcTolerance !== '' && show ? (
             <h3>
               <span className={styles.ibu}>Alcohol Tolerance: </span>
               {alcTolerance}
             </h3>
-          ) : null
-        }
-        {show ? <p>{description}</p> : null}
+          ) : null}
+          {show ? <p>{description}</p> : null}
+        </div>
       </div>
     </li>
   );
