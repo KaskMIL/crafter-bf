@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './BeerStylesElement.module.scss';
-import pint from '../../assets/pint-beer.jpeg';
-import hop from '../../assets/hops-2.jpeg';
-import yeast from '../../assets/yeast.jpeg';
 
 function BeerStyleElement(props) {
   const {
@@ -21,23 +18,24 @@ function BeerStyleElement(props) {
     reducer,
     country,
     porpose,
+    alcTolerance,
   } = props;
 
   return (
     <li className={styles.container}>
       {
         type === 'beer' ? (
-          <img src={pint} alt="Beer" className={styles.beerImg} />
+          <div className={styles.beerImg} />
         ) : null
       }
       {
         type === 'hop' ? (
-          <img src={hop} alt="Hop" className={styles.hopImg} />
+          <div className={styles.hopImg} />
         ) : null
       }
       {
         type === 'yeast' ? (
-          <img src={yeast} alt="Yeast" />
+          <div className={styles.yeastImg} />
         ) : null
       }
       <div className={styles.dataContainer}>
@@ -88,6 +86,14 @@ function BeerStyleElement(props) {
             </h3>
           ) : null
         }
+        {
+          alcTolerance !== '' && show ? (
+            <h3>
+              <span className={styles.ibu}>Alcohol Tolerance: </span>
+              {alcTolerance}
+            </h3>
+          ) : null
+        }
         {show ? <p>{description}</p> : null}
       </div>
     </li>
@@ -109,6 +115,7 @@ BeerStyleElement.propTypes = {
   reducer: PropTypes.func.isRequired,
   country: PropTypes.string,
   porpose: PropTypes.arrayOf(PropTypes.string),
+  alcTolerance: PropTypes.string,
 };
 
 BeerStyleElement.defaultProps = {
@@ -123,6 +130,7 @@ BeerStyleElement.defaultProps = {
   show: false,
   country: '',
   porpose: '',
+  alcTolerance: '',
 };
 
 export default BeerStyleElement;

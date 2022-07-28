@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getYeasts } from '../../Redux/YeastReducer/YeastReducer';
-import YeastElement from './YeastElement/YeastElement';
+import { getYeasts, showYeast } from '../../Redux/YeastReducer/YeastReducer';
 import BeerStylesHeader from '../ElementHeader/BeerStylesHeader';
 import ButtonsContainer from '../ButtonsContainer/ButtonsContanier';
 import SliderComponent from '../Slider/SliderComponent';
+import BeerStyleElement from '../ElementComponent/BeerStyleElement';
+import styles from '../BeerStyles/BeerStylesPage.module.scss';
 
 function BeerYeastsPage() {
   // Set dispatch and useSelector
@@ -72,8 +73,18 @@ function BeerYeastsPage() {
     setCelsius({ ...celsius, value: newValue });
   };
 
+  // Function to use reducer
+  const useShowYeast = (id) => {
+    dispatch(showYeast(id));
+  };
+
+  // function to convert num to 2 decimals
+  const convertTwoDecimals = (num) => (
+    parseFloat(num.toFixed(2))
+  );
+
   return (
-    <main>
+    <main className={styles.container}>
       <BeerStylesHeader title="Beer Yeasts" />
       <ButtonsContainer
         handleAbvButton={handleFarBtn}
@@ -95,21 +106,25 @@ function BeerYeastsPage() {
         firstStep={0.1}
         secondMin={0}
         secondMax={30}
-        secondStep={1}
+        secondStep={0.1}
       />
       <ul>
         {
           yeastList.map((yeast) => (
-            <YeastElement
+            <BeerStyleElement
               name={yeast.name}
               key={yeast.id}
-              minAttenuation={yeast.min_attenuation}
-              maxAttenuation={yeast.max_attenuation}
-              minFahrenheit={yeast.min_fahrenheit}
-              maxFahrenheit={yeast.max_fahrenheit}
-              minCelsius={yeast.min_celsius}
-              maxCelsius={yeast.max_celsius}
+              id={yeast.id}
+              type="yeast"
+              firstTitle="Farenheit "
+              secondTitle="Celsius"
+              firstMin={convertTwoDecimals(yeast.min_fahrenheit)}
+              firstMax={convertTwoDecimals(yeast.max_fahrenheit)}
+              secondMin={convertTwoDecimals(yeast.min_celsius)}
+              secondMax={convertTwoDecimals(yeast.max_celsius)}
               alcTolerance={yeast.alc_tolerance}
+              reducer={useShowYeast}
+              show={yeast.show}
             />
           ))
         }

@@ -5,6 +5,7 @@ const yeastsURL = 'https://secure-springs-90851.herokuapp.com/https://rustybeer.
 
 // Action
 const GETYEASTS = 'crafter-bf/redux/GET_YEASTS';
+const SHOWYEAST = 'crafter-bf/redux/SHOW_YEAST';
 
 // Action creators
 export const getYeasts = () => async (dispatch) => {
@@ -24,6 +25,7 @@ export const getYeasts = () => async (dispatch) => {
       min_celsius: yeast.min_temp.celsius,
       max_celsius: yeast.max_temp.celsius,
       alc_tolerance: yeast.alc_tolerance,
+      show: false,
     };
     return newYeast;
   });
@@ -34,11 +36,23 @@ export const getYeasts = () => async (dispatch) => {
   });
 };
 
+export const showYeast = (id) => ({
+  type: SHOWYEAST,
+  payload: id,
+});
+
 // Reducer
 const yeastReducer = (state = [], action) => {
   switch (action.type) {
     case GETYEASTS:
       return action.payload;
+    case SHOWYEAST:
+      return [...state.map((yeast) => {
+        if (yeast.id === action.payload) {
+          return { ...yeast, show: !yeast.show };
+        }
+        return yeast;
+      })];
     default:
       return state;
   }
