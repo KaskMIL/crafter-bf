@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Slider from '@mui/material/Slider';
+// import Slider from '@mui/material/Slider';
 import { getStylesList, showInfo } from '../../Redux/StylesReducer/stylesReducer';
 import BeerStylesHeader from '../ElementHeader/BeerStylesHeader';
 import ButtonsContainer from '../ButtonsContainer/ButtonsContanier';
 import BeerStyleElement from '../ElementComponent/BeerStyleElement';
+import SliderComponent from '../Slider/SliderComponent';
 import styles from './BeerStylesPage.module.scss';
 
 function BeerStylesPage() {
@@ -46,7 +47,7 @@ function BeerStylesPage() {
     } else {
       setAbvValue({
         ...abvValue,
-        value: [1, 10],
+        value: [1, 14],
         active: false,
       });
     }
@@ -73,11 +74,10 @@ function BeerStylesPage() {
     }
   };
 
+  // Function to send reducer to element
   const handleReducer = (id) => {
     dispatch(showInfo(id));
   };
-
-  const getText = (value, string) => `${value} ${string}`;
 
   return (
     <main className={styles.container}>
@@ -88,58 +88,16 @@ function BeerStylesPage() {
         firstBtnTitle="ABV Filter"
         secondBtnTitle="IBU Filter"
       />
-      <div className={styles.sliderContainer}>
-        {
-          abvValue.active ? (
-            <h2>ABV Filter</h2>
-          ) : null
-        }
-        {
-          ibuValue.active ? (
-            <h2>IBU Filter</h2>
-          ) : null
-        }
-        {
-          // ABV //
-          abvValue.active ? (
-            <Slider
-              onChange={(e) => handleAbvChange(e.target.value)}
-              getAriaLabel={() => 'ABV'}
-              valueLabelDisplay="auto"
-              getAriaValueText={() => getText(abvValue.value, 'ABV')}
-              value={abvValue.value}
-              step={1}
-              marks
-              min={1}
-              max={14}
-              sx={{
-                width: 300,
-                color: 'white',
-              }}
-            />
-          ) : null
-        }
-        {
-          // IBU //
-          ibuValue.active ? (
-            <Slider
-              onChange={(e) => handleIbuChange(e.target.value)}
-              getAriaLabel={() => 'IBU'}
-              valueLabelDisplay="auto"
-              getAriaValueText={() => getText(ibuValue.value, 'IBU')}
-              value={ibuValue.value}
-              step={1}
-              marks
-              min={0}
-              max={120}
-              sx={{
-                width: 300,
-                color: 'white',
-              }}
-            />
-          ) : null
-        }
-      </div>
+      <SliderComponent
+        firstTitle="ABV Filter"
+        secondTitle="IBU Filter"
+        firstHandleChange={handleAbvChange}
+        firstStateValue={abvValue.value}
+        firstStateActive={abvValue.active}
+        secondHandleChange={handleIbuChange}
+        secondStateValue={ibuValue.value}
+        secondStateActive={ibuValue.active}
+      />
       <ul>
         {beerList.map((beer) => {
           // ABV Filter
