@@ -2,14 +2,13 @@
 
 # Crafter-BF
 
->  SpaceX-reservations is an App that displays real live data from the SpaceX API. The App counts with four different pages: Rockets, Missions, Dragons and Profile. In the first three pages, the data is displayed, and the users can book Rockets and Dragons, and join selected space missions. On the Profile page, the user can find a summary of the Rockets and Dragons booked, and the missions joined. Components builded with React, centraliced application's state with Redux, and styling with CSS and SASS.
+>  Crafter-bf is an app whose objective is to show the most relevant data that a beer crafter would need. On the main page, the user can find navigation through the different pages: The styles page displays a list of 100 different beer styles and the user can filter the list by the amount of ABV or IBU. Every beer shows a little description of itself. On the Hops page, the user can find a list of 100 different hops that it's used to craft beer, it can be filtered by the amount of Alfa and Beta Acid, and show purpose and a description of itself. And in the Yeast page, the user can find a list of 100 different types of yeast, the different temperature in Fahrenheit and Celsius that needs to get active, and the alcohol åtolerance. the user can filter it by temperature. The app was built with React, Redux and SASS.
 
 ## Built With
 
 - React
 - Redux
-- CSS
-- SCSS
+- SASS
 
 ## Live Demo
 
@@ -57,7 +56,7 @@ Feel free to check the [issues page](../../issues/).
 
 Give a ⭐️ if you like this project!
 
-## Logo image
+## Images
 
 <a href="https://pixabay.com/" title="planet icons">Images from Pixabay.com</a>
 
