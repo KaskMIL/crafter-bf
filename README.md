@@ -14,6 +14,7 @@
 
 [Netlify](https://majestic-longma-a0f6ae.netlify.app)
 
+## [Loom Video](https://www.loom.com/share/036abbb3ecda4f6bb6f342ac773a2507)
 
 ## Getting Started
 
