@@ -101,6 +101,7 @@ function BeerStylesPage() {
         firstStep={1}
         secondMax={120}
         secondMin={0}
+        secondStep={1}
       />
       <ul>
         {beerList.map((beer) => {

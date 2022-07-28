@@ -59,13 +59,13 @@ function BeerStyleElement(props) {
               {secondMax}
             </h3>
           ) : null}
-          {porpose !== '' && show ? (
+          {porpose !== [] && show ? (
             <h3>
               <span className={styles.ibu}>Purpose: </span>
               {porpose[0]}
             </h3>
           ) : null}
-          {alcTolerance !== '' && show ? (
+          {alcTolerance !== 0 && show ? (
             <h3>
               <span className={styles.ibu}>Alcohol Tolerance: </span>
               {alcTolerance}
@@ -93,7 +93,7 @@ BeerStyleElement.propTypes = {
   reducer: PropTypes.func.isRequired,
   country: PropTypes.string,
   porpose: PropTypes.arrayOf(PropTypes.string),
-  alcTolerance: PropTypes.string,
+  alcTolerance: PropTypes.number,
 };
 
 BeerStyleElement.defaultProps = {
@@ -107,8 +107,8 @@ BeerStyleElement.defaultProps = {
   description: '',
   show: false,
   country: '',
-  porpose: '',
-  alcTolerance: '',
+  porpose: [],
+  alcTolerance: 0,
 };
 
 export default BeerStyleElement;
