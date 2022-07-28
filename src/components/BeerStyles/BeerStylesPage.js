@@ -96,6 +96,11 @@ function BeerStylesPage() {
         secondHandleChange={handleIbuChange}
         secondStateValue={ibuValue.value}
         secondStateActive={ibuValue.active}
+        firstMin={1}
+        firstMax={14}
+        firstStep={1}
+        secondMax={120}
+        secondMin={0}
       />
       <ul>
         {beerList.map((beer) => {

@@ -13,6 +13,12 @@ function SliderComponent(props) {
     secondHandleChange,
     secondStateValue,
     secondStateActive,
+    firstMax,
+    firstMin,
+    secondMax,
+    secondMin,
+    firstStep,
+    secondStep,
   } = props;
 
   const getText = (value, string) => `${value} ${string}`;
@@ -30,10 +36,10 @@ function SliderComponent(props) {
             valueLabelDisplay="auto"
             getAriaValueText={() => getText(firstStateValue, 'ABV')}
             value={firstStateValue}
-            step={1}
+            step={firstStep}
             marks
-            min={1}
-            max={14}
+            min={firstMin}
+            max={firstMax}
             sx={{
               width: 300,
               color: 'white',
@@ -50,10 +56,10 @@ function SliderComponent(props) {
             valueLabelDisplay="auto"
             getAriaValueText={() => getText(secondStateValue, 'IBU')}
             value={secondStateValue}
-            step={1}
+            step={secondStep}
             marks
-            min={0}
-            max={120}
+            min={secondMin}
+            max={secondMax}
             sx={{
               width: 300,
               color: 'white',
@@ -74,6 +80,12 @@ SliderComponent.propTypes = {
   firstStateActive: PropTypes.bool,
   secondStateValue: PropTypes.arrayOf(PropTypes.number).isRequired,
   secondStateActive: PropTypes.bool,
+  firstMax: PropTypes.number.isRequired,
+  firstMin: PropTypes.number.isRequired,
+  secondMax: PropTypes.number.isRequired,
+  secondMin: PropTypes.number.isRequired,
+  firstStep: PropTypes.number.isRequired,
+  secondStep: PropTypes.number.isRequired,
 };
 
 SliderComponent.defaultProps = {

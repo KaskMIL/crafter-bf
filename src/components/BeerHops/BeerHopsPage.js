@@ -96,10 +96,71 @@ function BeerHopsPage() {
         firstStateActive={alphaState.active}
         secondStateValue={betaState.value}
         secondStateActive={betaState.active}
+        firstMax={0.2}
+        firstMin={0}
+        firstStep={0.001}
+        secondMax={0.2}
+        secondMin={0}
+        secondStep={0.001}
       />
       <ul>
-        {
-          hopsList.map((hop) => (
+        {hopsList.map((hop) => {
+          // Alpha Filter
+          if (alphaState.active) {
+            if (
+              alphaState.value[0] <= hop.alpha_acid_max
+              && alphaState.value[1] >= hop.alpha_acid_max
+            ) {
+              return (
+                <BeerStyleElement
+                  name={hop.name}
+                  key={hop.id}
+                  id={hop.id}
+                  type="hop"
+                  firstTitle="Alpha Acid  "
+                  firstMin={hop.alpha_acid_min}
+                  firstMax={hop.alpha_acid_max}
+                  secondTitle="Beta Acid  "
+                  secondMin={hop.beta_acid_min}
+                  secondMax={hop.beta_acid_max}
+                  description={hop.description}
+                  show={hop.show}
+                  country={hop.country}
+                  porpose={hop.porpose}
+                  reducer={showHops}
+                />
+              );
+            }
+            return null;
+          }
+          if (betaState.active) {
+            if (
+              betaState.value[0] <= hop.beta_acid_max
+              && betaState.value[1] >= hop.beta_acid_max
+            ) {
+              return (
+                <BeerStyleElement
+                  name={hop.name}
+                  key={hop.id}
+                  id={hop.id}
+                  type="hop"
+                  firstTitle="Alpha Acid  "
+                  firstMin={hop.alpha_acid_min}
+                  firstMax={hop.alpha_acid_max}
+                  secondTitle="Beta Acid  "
+                  secondMin={hop.beta_acid_min}
+                  secondMax={hop.beta_acid_max}
+                  description={hop.description}
+                  show={hop.show}
+                  country={hop.country}
+                  porpose={hop.porpose}
+                  reducer={showHops}
+                />
+              );
+            }
+            return null;
+          }
+          return (
             <BeerStyleElement
               name={hop.name}
               key={hop.id}
@@ -117,8 +178,8 @@ function BeerHopsPage() {
               porpose={hop.porpose}
               reducer={showHops}
             />
-          ))
-        }
+          );
+        })}
       </ul>
     </main>
   );
