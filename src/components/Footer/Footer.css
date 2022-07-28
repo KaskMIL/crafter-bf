@@ -1,0 +1,9 @@
+:root {
+  --pink: #ec4c8a;
+  --purple: #4369b2;
+  --dark-purple: #b03868;
+}
+
+.container {
+  background-color: var(--pink);
+}
