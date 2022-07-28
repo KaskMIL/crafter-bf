@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
-import styles from '../BeerStylesPage.module.scss';
+import styles from '../BeerStyles/BeerStylesPage.module.scss';
 
 function BeerStylesHeader(props) {
   const { title } = props;

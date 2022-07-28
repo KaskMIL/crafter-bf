@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../BeerStylesPage.module.scss';
+import styles from '../BeerStyles/BeerStylesPage.module.scss';
 
 function ButtonsContainer(props) {
   const {

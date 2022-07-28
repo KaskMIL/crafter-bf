@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Slider from '@mui/material/Slider';
 import { getStylesList, showInfo } from '../../Redux/StylesReducer/stylesReducer';
-import BeerStylesHeader from './BeerStylesHeader/BeerStylesHeader';
-import ButtonsContainer from './ButtonsContainer/ButtonsContanier';
-import BeerStyleElement from '../BeerStyleElement/BeerStyleElement';
+import BeerStylesHeader from '../ElementHeader/BeerStylesHeader';
+import ButtonsContainer from '../ButtonsContainer/ButtonsContanier';
+import BeerStyleElement from '../ElementComponent/BeerStyleElement';
 import styles from './BeerStylesPage.module.scss';
 
 function BeerStylesPage() {
