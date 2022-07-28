@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getHops } from '../../Redux/HopsReducer/HopsReducer';
-import HopElement from './HopElement/HopElement';
+import { getHops, showHopsInfo } from '../../Redux/HopsReducer/HopsReducer';
 import BeerStylesHeader from '../ElementHeader/BeerStylesHeader';
 import ButtonsContainer from '../ButtonsContainer/ButtonsContanier';
 import SliderComponent from '../Slider/SliderComponent';
+import BeerStyleElement from '../ElementComponent/BeerStyleElement';
+import styles from '../BeerStyles/BeerStylesPage.module.scss';
 
 function BeerHopsPage() {
+  // Set dispatch te action the reducers and use selctore to bring the store
   const hopsList = useSelector((state) => state.hops);
   const dispatch = useDispatch();
 
@@ -22,20 +24,24 @@ function BeerHopsPage() {
     active: false,
   });
 
+  // To fetch data from the API
   useEffect(() => {
     if (!hopsList.length) {
       dispatch(getHops());
     }
   }, [dispatch, hopsList]);
 
+  // To set new value to Alpha Acid
   const handleAlphaChange = (newValue) => {
     setAlphaState({ ...alphaState, value: newValue });
   };
 
+  // Tp set new value to Beta Acid
   const handleBetaChange = (newValue) => {
     setBetaState({ ...betaState, value: newValue });
   };
 
+  // To invert Alpha acid active value and set default value
   const handleAlphaBtn = () => {
     if (!alphaState.active && !betaState.active) {
       setAlphaState({ ...alphaState, active: !alphaState.active });
@@ -51,6 +57,7 @@ function BeerHopsPage() {
     }
   };
 
+  // To invert Beta acid value and seet defult value
   const hanldeBetaBtn = () => {
     if (!betaState.active && !alphaState.active) {
       setBetaState({ ...betaState, active: !betaState.active });
@@ -66,8 +73,13 @@ function BeerHopsPage() {
     }
   };
 
+  // Reducer evoke
+  const showHops = (id) => {
+    dispatch(showHopsInfo(id));
+  };
+
   return (
-    <main>
+    <main className={styles.container}>
       <BeerStylesHeader title="Beer Hops" />
       <ButtonsContainer
         firstBtnTitle="Alpha Acid"
@@ -88,16 +100,22 @@ function BeerHopsPage() {
       <ul>
         {
           hopsList.map((hop) => (
-            <HopElement
-              key={hop.id}
+            <BeerStyleElement
               name={hop.name}
+              key={hop.id}
+              id={hop.id}
+              type="hop"
+              firstTitle="Alpha Acid  "
+              firstMin={hop.alpha_acid_min}
+              firstMax={hop.alpha_acid_max}
+              secondTitle="Beta Acid  "
+              secondMin={hop.beta_acid_min}
+              secondMax={hop.beta_acid_max}
+              description={hop.description}
+              show={hop.show}
               country={hop.country}
-              alpha_acid_min={hop.alpha_acid_min}
-              alpha_acid_max={hop.alpha_acid_max}
-              beta_acid_min={hop.beta_acid_min}
-              beta_acid_max={hop.beta_acid_max}
               porpose={hop.porpose}
-              description={hop.descrition}
+              reducer={showHops}
             />
           ))
         }

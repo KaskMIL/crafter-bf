@@ -22,7 +22,7 @@ export const getHops = () => async (dispatch) => {
       alpha_acid_max: hop.alpha_acid_max,
       beta_acid_min: hop.beta_acid_min,
       beta_acid_max: hop.beta_acid_max,
-      porpose: hop.porpose,
+      porpose: hop.purpose,
       country: hop.country,
       description: hop.description,
       show: false,
