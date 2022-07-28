@@ -1,0 +1,20 @@
+:root {
+  --pink: #ec4c8a;
+  --purple: #4369b2;
+  --dark-purple: #b03868;
+}
+
+.container {
+  background-color: var(--pink);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+
+  a {
+    color: white;
+    margin-right: 0.7rem;
+  }
+}
