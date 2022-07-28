@@ -19,17 +19,12 @@ html {
 
 .container {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 165px 1fr;
   column-gap: 1rem;
   font-family: 'Lato', sans-serif;
   padding-right: 0.2rem;
   color: white;
   background-color: var(--pink);
-
-  img {
-    width: 100%;
-    height: auto;
-  }
 
   h2 {
     font-weight: 900;
@@ -70,4 +65,19 @@ html {
 .ibu {
   font-weight: 900;
   font-size: 1.5rem;
+}
+
+.beerImg {
+  width: 100%;
+  height: auto;
+}
+
+.hopImg {
+  width: 165px;
+  height: auto;
+}
+
+.country {
+  margin-left: 1rem;
+  font-weight: 300;
 }

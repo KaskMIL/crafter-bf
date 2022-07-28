@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Slider from '@mui/material/Slider';
-import { getStylesList } from '../../Redux/StylesReducer/stylesReducer';
-import BeerStylesHeader from './BeerStylesHeader/BeerStylesHeader';
-import ButtonsContainer from './ButtonsContainer/ButtonsContanier';
-import BeerStyleElement from './BeerStyleElement/BeerStyleElement';
+import { getStylesList, showInfo } from '../../Redux/StylesReducer/stylesReducer';
+import BeerStylesHeader from '../ElementHeader/BeerStylesHeader';
+import ButtonsContainer from '../ButtonsContainer/ButtonsContanier';
+import BeerStyleElement from '../ElementComponent/BeerStyleElement';
+import SliderComponent from '../Slider/SliderComponent';
 import styles from './BeerStylesPage.module.scss';
 
 function BeerStylesPage() {
@@ -46,7 +46,7 @@ function BeerStylesPage() {
     } else {
       setAbvValue({
         ...abvValue,
-        value: [1, 10],
+        value: [1, 14],
         active: false,
       });
     }
@@ -72,67 +72,36 @@ function BeerStylesPage() {
       });
     }
   };
-  const getText = (value, string) => `${value} ${string}`;
+
+  // Function to send reducer to element
+  const handleReducer = (id) => {
+    dispatch(showInfo(id));
+  };
 
   return (
     <main className={styles.container}>
-      <BeerStylesHeader />
+      <BeerStylesHeader title="Beer Styles" />
       <ButtonsContainer
         handleAbvButton={handleAbvButton}
         handleIbuButton={handleIbuButton}
+        firstBtnTitle="ABV Filter"
+        secondBtnTitle="IBU Filter"
       />
-      <div className={styles.sliderContainer}>
-        {
-          abvValue.active ? (
-            <h2>ABV Filter</h2>
-          ) : null
-        }
-        {
-          ibuValue.active ? (
-            <h2>IBU Filter</h2>
-          ) : null
-        }
-        {
-          // ABV //
-          abvValue.active ? (
-            <Slider
-              onChange={(e) => handleAbvChange(e.target.value)}
-              getAriaLabel={() => 'ABV'}
-              valueLabelDisplay="auto"
-              getAriaValueText={() => getText(abvValue.value, 'ABV')}
-              value={abvValue.value}
-              step={1}
-              marks
-              min={1}
-              max={14}
-              sx={{
-                width: 300,
-                color: 'white',
-              }}
-            />
-          ) : null
-        }
-        {
-          // IBU //
-          ibuValue.active ? (
-            <Slider
-              onChange={(e) => handleIbuChange(e.target.value)}
-              getAriaLabel={() => 'IBU'}
-              valueLabelDisplay="auto"
-              getAriaValueText={() => getText(ibuValue.value, 'IBU')}
-              value={ibuValue.value}
-              step={1}
-              marks
-              min={0}
-              max={120}
-              sx={{
-                width: 300,
-                color: 'white',
-              }}
-            />
-          ) : null
-        }
-      </div>
+      <SliderComponent
+        firstTitle="ABV Filter"
+        secondTitle="IBU Filter"
+        firstHandleChange={handleAbvChange}
+        firstStateValue={abvValue.value}
+        firstStateActive={abvValue.active}
+        secondHandleChange={handleIbuChange}
+        secondStateValue={ibuValue.value}
+        secondStateActive={ibuValue.active}
+        firstMin={1}
+        firstMax={14}
+        firstStep={1}
+        secondMax={120}
+        secondMin={0}
+      />
       <ul>
         {beerList.map((beer) => {
           // ABV Filter
@@ -145,13 +114,17 @@ function BeerStylesPage() {
                 <BeerStyleElement
                   key={beer.id}
                   name={beer.name}
+                  type="beer"
                   id={beer.id}
-                  abvMax={beer.abv_max}
-                  abvMin={beer.abv_min}
-                  ibuMax={beer.ibu_max}
-                  ibuMin={beer.ibu_min}
+                  firstTitle="ABV:   "
+                  firstMax={beer.abv_max}
+                  firstMin={beer.abv_min}
+                  secondTitle="IBU:   "
+                  secondMax={beer.ibu_max}
+                  secondMin={beer.ibu_min}
                   description={beer.description}
                   show={beer.show}
+                  reducer={handleReducer}
                 />
               );
             }
@@ -166,14 +139,18 @@ function BeerStylesPage() {
               return (
                 <BeerStyleElement
                   key={beer.id}
-                  name={beer.name}
                   id={beer.id}
-                  abvMax={beer.abv_max}
-                  abvMin={beer.abv_min}
-                  ibuMax={beer.ibu_max}
-                  ibuMin={beer.ibu_min}
+                  type="beer"
+                  name={beer.name}
+                  firstTitle="ABV:   "
+                  firstMax={beer.abv_max}
+                  firstMin={beer.abv_min}
+                  secondTitle="IBU:   "
+                  secondMax={beer.ibu_max}
+                  secondMin={beer.ibu_min}
                   description={beer.description}
                   show={beer.show}
+                  reducer={handleReducer}
                 />
               );
             }
@@ -183,13 +160,17 @@ function BeerStylesPage() {
             <BeerStyleElement
               key={beer.id}
               name={beer.name}
+              type="beer"
               id={beer.id}
-              abvMax={beer.abv_max}
-              abvMin={beer.abv_min}
-              ibuMax={beer.ibu_max}
-              ibuMin={beer.ibu_min}
+              firstTitle="ABV   "
+              firstMax={beer.abv_max}
+              firstMin={beer.abv_min}
+              secondTitle="IBU   "
+              secondMax={beer.ibu_max}
+              secondMin={beer.ibu_min}
               description={beer.description}
               show={beer.show}
+              reducer={handleReducer}
             />
           );
         })}

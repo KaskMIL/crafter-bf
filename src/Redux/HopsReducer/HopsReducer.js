@@ -5,6 +5,7 @@ const hopsURL = 'https://secure-springs-90851.herokuapp.com/https://rustybeer.he
 
 // Action
 const GETHOPS = 'crafter-bf/redux/GET_HOPS';
+const SHOWINFO = 'crafter-bf/redux/SHOW_INFO';
 
 // Action creators
 export const getHops = () => async (dispatch) => {
@@ -21,9 +22,10 @@ export const getHops = () => async (dispatch) => {
       alpha_acid_max: hop.alpha_acid_max,
       beta_acid_min: hop.beta_acid_min,
       beta_acid_max: hop.beta_acid_max,
-      porpose: hop.porpose,
+      porpose: hop.purpose,
       country: hop.country,
       description: hop.description,
+      show: false,
     };
     return newHop;
   });
@@ -34,11 +36,23 @@ export const getHops = () => async (dispatch) => {
   });
 };
 
+export const showHopsInfo = (id) => ({
+  type: SHOWINFO,
+  payload: id,
+});
+
 // Reducer
 const hopsReducer = (state = [], action) => {
   switch (action.type) {
     case GETHOPS:
       return action.payload;
+    case SHOWINFO:
+      return [...state.map((hop) => {
+        if (action.payload === hop.id) {
+          return { ...hop, show: !hop.show };
+        }
+        return hop;
+      })];
     default:
       return state;
   }
